@@ -17,9 +17,12 @@
 "vim-repeat
 "vim-surround
 "vim-unimpaired
+"vim-sleuth
+"vim-go
 
 
 
+"how to change ctags dir - ctags -R -f ./.git/tags .
 
 execute pathogen#infect()
 
@@ -60,8 +63,11 @@ set foldlevelstart=3
 filetype indent on
 "for eclipselim
 filetype plugin on
+
+"removed because sleuth vim
 set tabstop=4
 set shiftwidth=4
+"set softtabstop=4
 set expandtab
 
 "highight matches
@@ -104,6 +110,7 @@ highlight clear SignColumn
 let g:gitgutter_max_signs = 700 
 
 let g:syntastic_javascript_checkers = ['jshint']
+
 
 
 let g:ctrlp_map = '<c-p>'
@@ -297,8 +304,45 @@ let g:elm_format_autosave = 1
 let g:elm_format_fail_silently = 0
 let g:elm_setup_keybindings = 1
 
+"disable preview
+"set completeopt-=preview
+"auto close preview after completion done
+let g:neocomplete#enable_auto_close_preview = 1
 
 call neocomplete#util#set_default_dictionary(
   \ 'g:neocomplete#sources#omni#input_patterns',
   \ 'elm',
   \ '\.')
+
+"insert the current date
+:nnoremap <leader>id :r! date<CR>
+
+"gotags stuff
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
+
