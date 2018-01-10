@@ -60,9 +60,9 @@ set number
 set foldmethod=indent 
 set foldlevelstart=3
 "set smartindent
-filetype indent on
 "for eclipselim
 filetype plugin on
+filetype indent on
 
 "removed because sleuth vim
 set tabstop=4
@@ -104,6 +104,8 @@ map <F11> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 :nnoremap <leader>gs :Gstatus<CR>
 :nnoremap <leader>gb :Gblame<CR>
 :nnoremap <leader>gd :Gdiff<CR>
+
+"vim javascript
 
 "gitgutter
 highlight clear SignColumn
@@ -316,6 +318,7 @@ call neocomplete#util#set_default_dictionary(
 
 "insert the current date
 :nnoremap <leader>id :r! date<CR>
+
 
 "gotags stuff
 let g:tagbar_type_go = {
