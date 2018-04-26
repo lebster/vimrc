@@ -37,6 +37,9 @@ set hidden
 "give use 256 color schemes!
 set term=screen-256color
 
+"indent when past
+""set paste // nopaste // make toggle
+
 "if problems try running :Helptags
 "
 "
